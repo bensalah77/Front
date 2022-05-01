@@ -108,5 +108,14 @@
       }
     }
   },
-  "defaultProject": "ample-admin-angular"
+  
+  "defaultProject": "ample-admin-angular",
+  "styles": [
+  
+    "node_modules/bootstrap/dist/css/bootstrap.min.css"
+],
+"scripts": [
+ 
+     "node_modules/bootstrap/dist/js/bootstrap.min.js"
+ ]
 }

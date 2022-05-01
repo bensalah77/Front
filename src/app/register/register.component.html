@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <!-- The image half -->
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+        <!-- The content half -->
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+
+                <!-- Demo content-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-7 mx-auto">
+                            <h3 class="display-4">Register</h3>
+                           
+                            <form [formGroup]="registerForm" (ngSubmit)="register()">
+                                <div class="form-group mb-3">
+                                    <input  type="text"  placeholder="First Name" name="fname" formControlName="fname" [ngClass]="{ 'is-invalid': submitted && registerForm.fname.errors  }"class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    <div *ngIf="submitted " class="invalid-feedback">
+                                        <div *ngIf="registerForm.fname.errors.required">First Name is required</div>
+                                     </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input  type="text"  placeholder="Last Name" name="lname" formControlName="lname" [ngClass]="{ 'is-invalid': submitted && f.lname.errors   }" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    <div *ngIf="submitted " class="invalid-feedback">
+                                        <div *ngIf="f.lname.errors.required">Last Name is required</div>
+                                     </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input  type="email" name="email"  placeholder="Email address" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email is required</div>
+                                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                     </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input type="password"  placeholder="Password" name="pwd" formControlName="pwd" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password is required</div>
+                                     </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input  type="date"   placeholder="Birthdate" name="birthdate" formControlName="date" [ngClass]="{ 'is-invalid': submitted && f.date.errors   }" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    <div *ngIf="submitted " class="invalid-feedback">
+                                        <div *ngIf="f.date.errors.required">Birthdate is required</div>
+                                     </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input  type="file"   placeholder="Pic" name="pic" (change)="getFile($event)" [ngClass]="{ 'is-invalid': submitted && f.file.errors   }" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    <div *ngIf="submitted " class="invalid-feedback">
+                                        <div *ngIf="f.file.errors.required">Pic is required</div>
+                                     </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <select  name="role" formControlName="role">
+                                        <option value="Human_Ressource_Manager">Human Ressource Manager</option>
+                                        <option value="Simple_User">Simple User</option>
+                                        <option value="Sales_Manager">Sales Manager</option>s
+                                        <option value="Partner">Partner</option>
+                                    </select>
+                                    <div *ngIf="submitted " class="invalid-feedback">
+                                        <div *ngIf="f.date.errors.required">Role is required</div>
+                                     </div>                                  
+                                </div>
+                               
+                                <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Register</button>
+                                <div class="text-center d-flex justify-content-between mt-4"><p>Login ! <a href="http://localhost:4200/login" class="font-italic text-muted"> 
+                                    <u>login</u></a></p></div>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- End -->
+
+            </div>
+        </div><!-- End -->
+
+    </div>
+</div>
