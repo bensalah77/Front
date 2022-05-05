@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServicesService } from '../service/services.service';
 import { User } from '../model/user.model';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -13,11 +14,15 @@ export class RegisterComponent implements OnInit {
 
 users:User=new User();
 file: any = null;
-  constructor(private formBuilder: FormBuilder,private userService:ServicesService, private router: Router) { }
+dates:any
+
+  constructor(private _datePipe: DatePipe,private formBuilder: FormBuilder,private userService:ServicesService, private router: Router) { }
 
 
-
+ 
   register(){
+   
+    this.dates=this._datePipe.transform( this.users.birthdate, 'yyyy-MM-dd');
     this.users = this.registerForm.value;
     const formdata = new FormData();
     formdata.append('file', this.file)
@@ -25,7 +30,7 @@ file: any = null;
     formdata.append('lname', this.users.lname)
     formdata.append('email', this.users.email)
     formdata.append('type', "Human_Ressource_Manager")
-    formdata.append('birthdate',"01-01-2000")
+    formdata.append('birthdate',this.dates)
     formdata.append('pwd', this.users.pwd)
 
     console.log(this.users) ;
@@ -42,6 +47,7 @@ file: any = null;
 
     this.file = event.target.files[0];
   }
+ 
 
 
   //Form Validables 
@@ -80,6 +86,7 @@ file: any = null;
     role: ['', [Validators.required]],
     
     });
+    
   }
 
 }

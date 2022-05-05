@@ -20,7 +20,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.userService.forgot(forgotForm.value.email)
     .subscribe(
       (response: any) => {
-
+        localStorage.setItem('ResetToken', response.token);
           this.router.navigate(['/login']);
        
       },

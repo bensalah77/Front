@@ -7,14 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  token = localStorage.getItem('token') || '{}';
+  token = localStorage.getItem('jwtToken') || '{}';
   constructor(private _httpClient:HttpClient) {}
 
   getUserDetails(): Observable<any> {
 
     let headers = new HttpHeaders();
-    headers = headers.append('token', this.token)
-    return this._httpClient.request<any>('get', 'http://localhost:8002/signup/api/user/details',
+    headers = headers.append('Authorization','Bearer '+ this.token)
+    
+    return this._httpClient.get<any>('http://localhost:8082/User/details',
         {
             headers: headers,
         }

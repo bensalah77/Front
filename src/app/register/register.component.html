@@ -39,7 +39,7 @@
                                      </div>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input  type="date"   placeholder="Birthdate" name="birthdate" formControlName="date" [ngClass]="{ 'is-invalid': submitted && f.date.errors   }" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    <input  type="date"   placeholder="Birthdate" name="birthdate" formControlName="date" [ngClass]="{ 'is-invalid': submitted && f.date.errors   }"   class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
                                     <div *ngIf="submitted " class="invalid-feedback">
                                         <div *ngIf="f.date.errors.required">Birthdate is required</div>
                                      </div>

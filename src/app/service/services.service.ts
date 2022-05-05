@@ -34,8 +34,14 @@ requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
       headers: this.requestHeader,
     });;
   }
-
-  public reset(password:any){return}
+  
+  token = localStorage.getItem('ResetToken');
+  public reset(password?:any){
+    
+    return this.user.post("http://localhost:8082/Authentification/reset/"+this.token+"/"+password, {
+     
+    });
+  }
 
 
  
