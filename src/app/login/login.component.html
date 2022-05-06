@@ -16,13 +16,16 @@
                                 <div class="form-group mb-3">
                                     <input id="inputEmail" type="email" name="username" ngModel
                                    
-                                     placeholder="Email address" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
-                                   
+                                     #usernameInput="ngModel" placeholder="Email address" required autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                     <span class="help-block" style="color:red;" *ngIf="usernameInput.invalid && usernameInput.touched">
+                                        Please enter a username</span>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input id="inputPassword" type="password"  name="password" ngModel placeholder="Password" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
-                                   
+                                    <input id="inputPassword" type="password"  name="password" ngModel  #passwordInput="ngModel" placeholder="Password" required class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    <span class="help-block" style="color:red;" *ngIf="passwordInput.invalid && passwordInput.touched">
+                                        Please enter a password</span>
                                 </div>
+                                
                                
                                 <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Login</button>
                                 

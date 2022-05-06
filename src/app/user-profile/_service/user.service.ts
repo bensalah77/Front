@@ -21,4 +21,18 @@ export class UserService {
         }
     );
 }
+UpdateUser(id:any): Observable<any> {
+
+  let headers = new HttpHeaders();
+  headers = headers.append('Authorization','Bearer '+ this.token)
+  
+  return this._httpClient.get<any>('http://localhost:8082/User/UpdateUser/'+id,
+      {
+          headers: headers,
+      }
+  );
+}
+
+
+
 }
