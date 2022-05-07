@@ -24,6 +24,9 @@ import { SpinnerComponent } from './shared/spinner.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { BadgeListComponent } from './badge-list/badge-list.component';
+import { VoteBadgecomponentComponent } from './vote-badgecomponent/vote-badgecomponent.component';
+import { EditBadgeComponent } from './edit-badge/edit-badge.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -39,6 +42,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FullComponent,
     NavigationComponent,
     SidebarComponent,
+    BadgeListComponent,
+    VoteBadgecomponentComponent,
+    EditBadgeComponent,
   ],
   imports: [
     CommonModule,
@@ -48,9 +54,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    RouterModule.forRoot(Approutes, { useHash: false, relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(Approutes, { useHash: true, relativeLinkResolution: 'legacy' }),
     PerfectScrollbarModule,
+   
   ],
+  exports: [RouterModule],
   providers: [
     {
       provide: LocationStrategy,

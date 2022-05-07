@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
-  "compilerOptions": {
+  "compilerOptions": 
+  {
+    //"baseUrl": "src",
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -10,13 +12,18 @@
     "strictPropertyInitialization": false,
     "emitDecoratorMetadata": true,
     "sourceMap": true,
-    "declaration": false,
+    "declaration": false, 
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
+    //myPart
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    //myPart
     "lib": [
       "es2018",
       "dom"

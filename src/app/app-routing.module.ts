@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BadgeListComponent } from './badge-list/badge-list.component';
+import { EditBadgeComponent } from './edit-badge/edit-badge.component';
 
 import { FullComponent } from './layouts/full/full.component';
+import { VoteBadgecomponentComponent } from './vote-badgecomponent/vote-badgecomponent.component';
 
 export const Approutes: Routes = [
   {
@@ -23,6 +26,13 @@ export const Approutes: Routes = [
       }
     ]
   },
+  { path: 'badge', component: BadgeListComponent 
+  },
+  { path: 'badge/vote/:id', component: VoteBadgecomponentComponent 
+  },
+  { path: 'badge/edit/:id', component: EditBadgeComponent 
+  },
+  
   {
     path: '**',
     redirectTo: '/starter'
