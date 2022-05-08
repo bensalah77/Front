@@ -10,6 +10,8 @@ import { TopSellingComponent } from "./dashboard-components/top-selling/top-sell
 import { TopCardsComponent } from "./dashboard-components/top-cards/top-cards.component";
 import { BlogCardsComponent } from "./dashboard-components/blog-cards/blog-cards.component";
 import { BadgeListComponent } from "../badge-list/badge-list.component";
+import { UserProfileComponent } from "../user-profile/user-profile.component";
+
 
 
 const routes: Routes = [
@@ -24,7 +26,9 @@ const routes: Routes = [
   },
   {
     path: 'badge',
-    component: BadgeListComponent
+    component: BadgeListComponent},
+    {path: 'profile',
+    component: UserProfileComponent
   }
 ];
 

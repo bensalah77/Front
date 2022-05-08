@@ -83,32 +83,27 @@
           
           <br>
 
-                    <!--buttons-->
+                    <!--buttons--> 
 
                     <div class="row mx-md-n6">
-                      <div class="col px-md-6">
-                                                    <a mat-raised-button type="button" [routerLink]="['/badge/vote/', badge.id]" [routerLinkActive]="['active']"
-                                                    [routerLinkActiveOptions]="{exact:true}" (click)="voteBadgeRecord(badge.id)"
-                                                    class="p-3 border btn btn-outline-success btn-sm">
-                                                    <i class="material-icons">Vote</i>
-                                                    </a>
-
-                                                 
-                      </div>
 
                       <div class="col px-md-6">
-                        <a mat-raised-button type="button" [routerLink]="['/badge/vote/', badge.id]"
-                        class="p-3 border btn btn-outline-info btn-sm">
-                        <i class="material-icons">Edit</i>
-                        </a>
+                        <!--(click)="goToVoteBadge(badge.id)"--> 
+                        <button mat-raised-button type="button"
+                        
+                        (click)="popUpVoteBadge(badge)"
+                        class="p-3 border btn btn-outline-primary btn-sm">
+                        voti
+                        </button>
                       </div>
-                     
+                   
+                      
                       <div class="col px-md-6">
                         <button mat-raised-button type="button"
                         
                         (click)="goToEditBadge(badge.id)"
-                        class="p-3 border btn btn-outline-danger btn-sm">
-                        <i class="material-icons">ed</i>
+                        class="p-3 border btn btn-outline-primary btn-sm">
+                        update
                         </button>
                       </div>
 

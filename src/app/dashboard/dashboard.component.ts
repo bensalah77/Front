@@ -2,6 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 //declare var require: any;
 
 @Component({
+  selector:"app-dash",
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements AfterViewInit {

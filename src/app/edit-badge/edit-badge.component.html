@@ -1,7 +1,7 @@
 <p>edit-badge works!</p>
 <div class="container">
     <hr>
-  
+  <h1>{{b.nbVoteYes}}</h1>
     <!--Add Form-->
     <form [formGroup]="myGroup" (ngSubmit)="updateBadgeformsubmit()">
       <br><br>
@@ -14,7 +14,7 @@
            </div> 
       </div>
       <div class="form-group mb-3">
-        <input  type="number" name="nbVoteNo" formControlName="nbVoteNo" [ngClass]="{ 'is-invalid': submitted && myGroup.nbVoteNo.errors  }"class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+        <input  type="number" name="nbVoteNo" formControlName="nbVoteNo"  [ngClass]="{ 'is-invalid': submitted && myGroup.nbVoteNo.errors  }"class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
         <div *ngIf="submitted " class="invalid-feedback">
             <div *ngIf="f.nbVoteNo.errors.required">nbVoteNo is required</div> 
          </div>
@@ -27,6 +27,11 @@
             <div *ngIf="f.nbVoteABS.errors.required">nbVoteABS is required</div>
          </div>
       </div>
+
+      <div class="form-group mb-3">
+        <input  type="file"   placeholder="img" name="img" formControlName="img" (change)="getFile($event)" [ngClass]="{ 'is-invalid': submitted && f.img.errors   }" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+   
+    </div>
   
 
     <!--

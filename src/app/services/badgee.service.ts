@@ -33,6 +33,13 @@ export class BadgeeService {
     );
   }
 
+  updateBadge(idBadge: number ,b : FormData): Observable<Object> {
+    return this.httpClient.put<Object>(this.api+'/update/'+idBadge ,b).pipe( 
+                                                                    tap(() => { this._refreshNeeded$.next();
+                                                                    })
+    );
+  }
+
   getBadges(): Observable<Badge[]> {
 
     return this.httpClient.get<Badge[]>(this.api+'/'+'Badges');
@@ -48,15 +55,15 @@ export class BadgeeService {
   voteBadge(idBadge : number, c: FormData): Observable<Object>{
     return this.httpClient.put<Object>(this.api+'/voteBadge/'+idBadge,c);
   }
-/*
+
   getId(getId?: number){
     this.id = getId;
   }
-*/
+
 //////////////// TO DO GET BY ID BY MYSELF
-  getBadgeById(id: number): Observable<Object>
+  getBadgeById(id: number): Observable<any>
   {
-    return this.httpClient.get<Object>(this.api+'/'+id);
+    return this.httpClient.get<any>(this.api+'/'+id);
     //return this.httpClient.get<Object>(this.api+'/'+this.id);
   }
 

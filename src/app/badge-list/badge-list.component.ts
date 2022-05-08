@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { BadgeeService } from '../services/badgee.service';
 import { Badge } from '../model/badge';
 import { Router } from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { switchMap } from 'rxjs/operators';
-import { DomSanitizer } from '@angular/platform-browser';
+
+import { VoteBadgecomponentComponent } from '../vote-badgecomponent/vote-badgecomponent.component';
 //import { BadgeService } from '../services/badge.service';
 
 
@@ -33,7 +35,8 @@ export class BadgeListComponent implements OnInit {
   constructor(private formBuilder: FormBuilder ,
               private badgeService : BadgeeService,
               private router: Router,
-              private _sanitizer : DomSanitizer) 
+              private _sanitizer : DomSanitizer,
+              private dg : MatDialog) 
               { }
 
   ngOnInit(): void {
@@ -158,12 +161,27 @@ getFile(event: any): void{
   }
 
   goToEditBadge(id?: number){
-    console.log("id"+id);
-    this.router.navigate(['/badge/edit/'+id, id]);
+    console.log("id", id);
+    this.router.navigate(['/badge/edit/',id]);
 
   }
 
+  goToVoteBadge(id?: number){
+    console.log("id", id);
+    this.router.navigate(['/badge/vote/',id]);
+  }
 
+
+  popUpVoteBadge(data: any)
+  {
+    this.dg.open(VoteBadgecomponentComponent,{
+      data : {
+        data : data
+      }
+    }).afterClosed().subscribe(()=>{
+      this.getBadges();
+    })
+  }
 
 
 

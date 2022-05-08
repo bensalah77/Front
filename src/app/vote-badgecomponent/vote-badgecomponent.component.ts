@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormControl , FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Badge } from '../model/badge';
 import { BadgeeService } from '../services/badgee.service';
 
@@ -13,8 +14,13 @@ export class VoteBadgecomponentComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  constructor(){ }
-/*
+  constructor(@Inject(MAT_DIALOG_DATA) 
+              private data: any,
+              private thisDg: MatDialogRef<VoteBadgecomponentComponent>)
+  { }
+
+  
+/*  
   //Form Validables 
   voteForm:any =  FormGroup;
   submitted = false;
