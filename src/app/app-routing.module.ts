@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BadgeListComponent } from './badge-list/badge-list.component';
+import { EditBadgeComponent } from './edit-badge/edit-badge.component';
 
 import { FullComponent } from './layouts/full/full.component';
 
@@ -22,6 +24,10 @@ export const Approutes: Routes = [
         loadChildren: () => import('./component/component.module').then(m => m.ComponentsModule)
       }
     ]
+  },
+  { path: 'badge', component: BadgeListComponent 
+  },
+  { path: 'badge/edit/:id', component: EditBadgeComponent 
   },
   {
     path: '**',

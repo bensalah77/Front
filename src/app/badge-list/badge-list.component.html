@@ -1,0 +1,150 @@
+
+<!--ADD BADGE-->  
+<div class="container">
+  <hr>
+<button class="btn btn-primary" (click)="showForm()"> Add Badge</button>
+
+  <!--Add Form-->
+  <form [formGroup]="myGroup" (ngSubmit)="addBadge()" [hidden]="hidden">
+    <br><br>
+    <h3>Add Badge form:</h3>
+    <br>
+    <div class="form-group mb-3">
+        <input  type="number"  placeholder="vote yes" name="nbVoteYes" formControlName="nbVoteYes" [ngClass]="{ 'is-invalid': submitted && myGroup.nbVoteYes.errors  }"class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+        <div *ngIf="submitted " class="invalid-feedback">
+            <div *ngIf="f.nbVoteYes.errors.required">nbVoteYes is required</div>
+         </div> 
+    </div>
+    <div class="form-group mb-3">
+      <input  type="number"  placeholder="vote no" name="nbVoteNo" formControlName="nbVoteNo" [ngClass]="{ 'is-invalid': submitted && myGroup.nbVoteNo.errors  }"class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+      <div *ngIf="submitted " class="invalid-feedback">
+          <div *ngIf="f.nbVoteNo.errors.required">nbVoteNo is required</div> 
+       </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <input  type="number"  placeholder="vote abs" name="nbVoteABS"
+       formControlName="nbVoteABS" [ngClass]="{ 'is-invalid': submitted && myGroup.nbVoteABS.errors  }"class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+      <div *ngIf="submitted " class="invalid-feedback">
+          <div *ngIf="f.nbVoteABS.errors.required">nbVoteABS is required</div>
+       </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <input  type="file"   placeholder="img" name="img" formControlName="img" (change)="getFile($event)" [ngClass]="{ 'is-invalid': submitted && f.img.errors   }" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+        <div *ngIf="submitted " class="invalid-feedback">
+            <div *ngIf="f.img.errors.required">Pic is required</div>
+         </div>
+    </div>
+    
+   
+    <button type="submit" [disabled]="myGroup.invalid" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Add badge</button>
+    <button class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" (click)="hideForm()"> Cancel</button>
+</form>
+
+
+  
+
+</div>
+
+
+
+
+
+<div class="container">
+
+
+<h4 class="font-medium mb-3">Our Badge</h4>
+<!-- Row -->
+<div class="row">
+
+    <div class="col-lg-3 col-md-6" *ngFor="let badge of badge">
+      <!-- ---------------------
+                        start Card title
+                    ---------------- -->
+      <div class="card" style="width: 18rem;">
+        <!--img --> <!--<img class="card-img-top img-responsive" src="{{img}}" alt="Card image cap">-->
+        <!--
+        <img
+          class="card-img-top img-responsive"
+          src="assets/images/bg/bg1.jpg"
+          alt="Card image cap"
+        />-->
+        <img [src]="convert(badge.img)" alt="blogs" class="card-img-top" style="max-height: 200px;">
+        <div class="card-body card text-center">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4 class="card-title">employee name</h4></li>
+            <li class="list-group-item"><p class="card-text">
+              Job description of the employee.
+            </p></li>
+          </ul>
+
+
+          
+          <br>
+
+                    <!--buttons--> 
+
+                    <div class="row mx-md-n6">
+
+                      <div class="col px-md-6">
+                        <!--(click)="goToVoteBadge(badge.id)"--> 
+                        <button mat-raised-button type="button"
+                        
+                        (click)="popUpVoteBadge(badge)"
+                        class="p-3 border btn btn-outline-primary btn-sm">
+                        voti
+                        </button>
+                      </div>
+                   
+                      
+                      <div class="col px-md-6">
+                        <button mat-raised-button type="button"
+                        
+                        (click)="goToEditBadge(badge.id)"
+                        class="p-3 border btn btn-outline-primary btn-sm">
+                        update
+                        </button>
+                      </div>
+
+                      <div class="col px-md-6">
+                                                        <button mat-raised-button type="button"
+                                                        matTooltip="Remove" 
+                                                        [matTooltipPosition]="'above'" 
+                                                        (click)="deleteBadge(badge.id)"
+                                                        class="p-3 border btn btn-outline-danger btn-sm">
+                                                        <i class="material-icons">delete</i>
+                                                        </button>
+                      </div>
+                    </div>
+                    
+
+       
+          <!--data tab-->
+          <table>
+            <thead>
+              <th scope="row"><h5 class="mb-0 font-medium text-muted">Yes</h5></th>
+              <th scope="row"><h5 class="mb-0 font-medium text-muted">No</h5></th>
+              <th scope="row"><h5 class="mb-0 font-medium text-muted">Abstention</h5></th>
+            </thead>
+            <tbody>
+              <td scope="row"><span class="text-muted">{{ badge.nbVoteYes}}</span></td>
+              <td scope="row"><span class="text-muted">{{ badge.nbVoteNo}}</span></td>
+              <td scope="row"><span class="text-muted">{{ badge.nbVoteABS}}</span></td>
+              
+            </tbody>
+          </table>
+
+     
+        </div>
+      </div>
+      <!-- ---------------------
+                        end Card title
+                    ---------------- -->
+    </div>
+
+</div>
+
+</div>
+
+

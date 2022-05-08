@@ -1,0 +1,65 @@
+<p>edit-badge works!</p>
+<div class="container">
+    <hr>
+  <h1>{{b.nbVoteYes}}</h1>
+    <!--Add Form-->
+    <form [formGroup]="myGroup" (ngSubmit)="updateBadgeformsubmit()">
+      <br><br>
+      <h3>Update Badge form:</h3>
+      <br>
+      <div class="form-group mb-3">
+          <input type="number" name="nbVoteYes" formControlName="nbVoteYes" [ngClass]="{ 'is-invalid': submitted && myGroup.nbVoteYes.errors  }"class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+          <div *ngIf="submitted " class="invalid-feedback">
+              <div *ngIf="f.nbVoteYes.errors.required">nbVoteYes is required</div>
+           </div> 
+      </div>
+      <div class="form-group mb-3">
+        <input  type="number" name="nbVoteNo" formControlName="nbVoteNo"  [ngClass]="{ 'is-invalid': submitted && myGroup.nbVoteNo.errors  }"class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+        <div *ngIf="submitted " class="invalid-feedback">
+            <div *ngIf="f.nbVoteNo.errors.required">nbVoteNo is required</div> 
+         </div>
+      </div>
+  
+      <div class="form-group mb-3">
+        <input  type="number" name="nbVoteABS"
+         formControlName="nbVoteABS" [ngClass]="{ 'is-invalid': submitted && myGroup.nbVoteABS.errors  }"class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+        <div *ngIf="submitted " class="invalid-feedback">
+            <div *ngIf="f.nbVoteABS.errors.required">nbVoteABS is required</div>
+         </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <input  type="file"   placeholder="img" name="img" formControlName="img" (change)="getFile($event)" [ngClass]="{ 'is-invalid': submitted && f.img.errors   }" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+   
+    </div>
+  
+
+    <!--
+      <button type="submit" class="btn btn-success">Edit</button>
+      <button type="button" class="btn btn-primary" (click)="gotolist()">BACK</button>
+    -->  
+      <button type="submit" [disabled]="myGroup.invalid" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Edit badge</button>
+      <button class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" (click)="gotolist()"> Cancel</button>
+  </form>
+  
+  
+    
+  
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
