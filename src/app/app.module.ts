@@ -28,6 +28,8 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { FrontOfficeComponent } from './front-office/front-office.component';
+import { TchatComponent } from './tchat/tchat.component';
+
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -50,6 +52,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ForgotPasswordComponent,
     ResetPasswordComponent,
     FrontOfficeComponent,
+    TchatComponent,
+  
     
    
   ],

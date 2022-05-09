@@ -84,6 +84,7 @@ dates:any
     lname: ['', [Validators.required]],
     date: ['', [Validators.required]],
     role: ['', [Validators.required]],
+    pic: ['', [Validators.required]],
     
     });
     

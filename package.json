@@ -29,6 +29,7 @@
     "@popperjs/core": "^2.11.0",
     "angular-feather": "^6.0.10",
     "angular-notifier": "^6.0.1",
+    "angular-websocket": "^2.0.1",
     "apexcharts": "^3.25.0",
     "bootstrap": "^5.0.3",
     "bootstrap-icons": "^1.7.0",

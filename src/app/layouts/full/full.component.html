@@ -19,9 +19,12 @@
     <nav class="d-flex top-navbar navbar-expand-lg navbar-dark">
       <div
         class="navbar-header"
+        [ngClass]="{'custom-background':type == 'Simple_User'}"
+
         [ngClass]="expandLogo ? 'expand-logo' : ''"
         data-logobg="skin6"
       >
+     
         
        
       </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener } from "@angular/core";
 import { Router } from "@angular/router";
+import { User } from "../../model/user.model";
+import { UserService } from "../../user-profile/_service/user.service";
 
 //declare var $: any;
 
@@ -9,8 +11,9 @@ import { Router } from "@angular/router";
   styleUrls: ["./full.component.scss"],
 })
 export class FullComponent implements OnInit {
-
-  constructor(public router: Router) {}
+  users=new User;
+  type:String="";
+  constructor(public router: Router,private _userService: UserService) {}
   public isCollapsed = false;
   public innerWidth: number = 0;
   public defaultSidebar: string = "";
@@ -28,6 +31,17 @@ export class FullComponent implements OnInit {
     }
     this.defaultSidebar = this.sidebartype;
     this.handleSidebar();
+    this._userService.getUserDetails()
+    .subscribe((response:any)=>{
+      this.users = response
+      
+      this.type=response.type;
+        
+      console.log(this.users);
+      
+     
+    }
+    )
   }
 
   @HostListener("window:resize", ["$event"])
