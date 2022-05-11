@@ -6,6 +6,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { FullComponent } from './layouts/full/full.component';
 import { FrontOfficeComponent } from './front-office/front-office.component';
 
+
 export const Approutes: Routes = [
  {
     path: '',
@@ -23,5 +24,6 @@ export const Approutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgotpassword', component: ForgotPasswordComponent },
-  { path: 'resetpassword', component: ResetPasswordComponent }
+  { path: 'resetpassword', component: ResetPasswordComponent },
+  
 ];

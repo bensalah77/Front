@@ -2,6 +2,11 @@ import { Component,  OnInit } from '@angular/core';
 import { ServicesService } from '../service/services.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import {
+  SocialAuthService,
+  GoogleLoginProvider,
+  SocialUser,
+} from 'angularx-social-login';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +15,7 @@ import { NgForm } from '@angular/forms';
 
 export class LoginComponent implements OnInit {
   
-  constructor(private userService:ServicesService, private router: Router) { }
+  constructor(private userService:ServicesService, private router: Router,  private socialAuthService: SocialAuthService) { }
 
 
   login(loginForm: NgForm) {
@@ -27,10 +32,20 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
 
 
 
-
-  ngOnInit(){}
+  socialUser!: SocialUser;
+ 
+  ngOnInit(){
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+     
+      console.log(this.socialUser);
+    });
+  }
 
 }

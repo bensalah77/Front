@@ -44,7 +44,7 @@
   </li>
   
   <li class="nav-item">
-    <a class="nav-link waves-effect waves-dark bi bi-chat" href="#"> Chat </a>
+    <a class="nav-link waves-effect waves-dark bi bi-chat" routerLink="dashboard/chat"> Chat </a>
   </li>
 
   <li class="nav-item" ngbDropdown placement="bottom-end">
@@ -57,12 +57,12 @@
       aria-expanded="false"
     >
       <img
-        src="assets/images/users/user1.jpg"
+      [src]="convert(users.pic)" 
         alt="user"
         class="rounded-circle"
         width="31"
       />
-      <span class="ms-2">User</span>
+      <span class="ms-2">{{users.fname}}</span>
     </a>
     <div class="dropdown-menu-right" ngbDropdownMenu>
       <a class="dropdown-item" routerLink="dashboard/profile"> My Profile</a>

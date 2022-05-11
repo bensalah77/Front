@@ -22,14 +22,14 @@
           <div class="card mb-4">
               <div class="card-header">Account Details</div>
               <div class="card-body">
-                  <form  (ngSubmit)="UpdateUser()">
+                  <form [formGroup]="registerForm" (ngSubmit)="UpdateUser()">
                      
                       <!-- Form Row-->
                       <div class="row gx-3 mb-3">
                           <!-- Form Group (first name)-->
                           <div class="col-md-6">
                               <label class="small mb-1" for="inputFirstName">First name</label>
-                              <input class="form-control" id="inputFirstName" name="fname" formControlName="fname" type="text" placeholder="Enter your first name" value="{{users.fname}}">
+                              <input class="form-control" id="inputFirstName" name="fname"  formControlName="fname" type="text"  placeholder="Enter your first name" value="{{users.fname}}">
                           </div>
                           <!-- Form Group (last name)-->
                           <div class="col-md-6">
@@ -46,7 +46,7 @@
                       </div>
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputPic">Pic</label>
-                        <input class="form-control" id="inputPic" type="file" name="pic" formControlName="pic" (change)="getFile($event)"  placeholder="Enter your email address" value="{{users.pic}}">
+                        <input class="form-control" id="inputPic" type="file" name="pic" formControlName="pic" (change)="getFile($event)"  placeholder="Enter your email address" >
                     </div>
 
                     </div>

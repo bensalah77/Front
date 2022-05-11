@@ -1,9 +1,13 @@
-export class Tchat {
-    user: string;
-    message: string;
+import { Time } from "@angular/common";
 
-    constructor(user: string, message: string){
-        this.user = user;
-        this.message = message;
-    }
+export class Tchat {
+    id?:number;
+    textMessage?: any; 
+    date?: Date = new Date(); 
+    time?: any;
+   
+    
+    
+   
+    
 }

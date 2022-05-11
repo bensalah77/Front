@@ -9,9 +9,9 @@ import { Tchat } from '../model/tchat.model';
 export class ServicesService {
 
 
-  //private _webSocket: WebSocket;
  
-  chatMessages: Tchat[] = [];
+ 
+
 requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
 
   constructor(private user:HttpClient) {}
@@ -47,30 +47,22 @@ requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
   }
 
 
-  /*public openWebSocket(){
-    this._webSocket = new WebSocket('ws://localhost:8080/chat');
 
-    this._webSocket.onopen = (event) => {
-      console.log('Open: ', event);
-    };
+  public Rchat(id?:Number): Observable<Tchat[]>{
+      return this.user.get<Tchat[]>("http://localhost:8082/TCHAT/receiverTChat/"+id);
+     }
 
-    this._webSocket.onmessage = (event) => {
-      const chatMessageDto = JSON.parse(event.data);
-      this.chatMessages.push(chatMessageDto);
-    };
+     
+  public chat(textMessage?:any){ 
+    let body={
+      "textMessage":textMessage
+    }
+    return this.user.post("http://localhost:8082/TCHAT/sendTChat/"+3,body, {
+      headers: this.requestHeader,
+    });
+   }
 
-    this._webSocket.onclose = (event) => {
-      console.log('Close: ', event);
-    };
-  }
 
-  public sendMessage(chatMessageDto: Tchat){
-    this._webSocket.send(JSON.stringify(chatMessageDto));
-  }
-
-  public closeWebSocket() {
-    this._webSocket.close();
-  }*/
 
 
  

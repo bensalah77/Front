@@ -2,6 +2,9 @@ import { Component, AfterViewInit, EventEmitter, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { Router } from '@angular/router';
+import { UserService } from '../../user-profile/_service/user.service';
+import { User } from '../../model/user.model';
+import { DomSanitizer } from '@angular/platform-browser';
 declare var $: any;
 
 @Component({
@@ -15,7 +18,8 @@ export class NavigationComponent implements AfterViewInit {
 
   public showSearch = false;
 
-  constructor(private modalService: NgbModal, private router: Router) {
+  constructor(private modalService: NgbModal, private router: Router,
+    private _userService: UserService,private _sanitizer : DomSanitizer) {
   }
 
   logOut() {
@@ -25,8 +29,22 @@ export class NavigationComponent implements AfterViewInit {
     this.router.navigate(['/login']);
        
   }
-
-
+  users=new User;
+  ngOnInit() {
+    this._userService.getUserDetails()
+    .subscribe((response)=>{
+      this.users = response
+      
+        
+      console.log(this.users);
+      
+     
+    }
+    )
+  }
+  convert(base64String : any) {
+    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + base64String)
+  }
 
   // This is for Notifications
   notifications: Object[] = [

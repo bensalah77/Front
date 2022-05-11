@@ -3,8 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { User } from '../model/user.model';
 import { UserService } from './_service/user.service';
 import { DatePipe } from '@angular/common';
-import { FormBuilder,  FormGroup,  Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl,  FormGroup,  Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -12,35 +12,46 @@ import { Router } from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
   previewSignsrc:any
+  registerForm?:any=  FormGroup;
   users=new User;
-
+  b: User = new User();
   file: any = null;
   dates:any
   imageSrc:any ='C:/Users/Ajengui/git/Rest---App/Rest_App/uploads/CaptureEmail.PNG';
-  constructor(private _datePipe: DatePipe,private formBuilder: FormBuilder,private _sanitizer : DomSanitizer,private _userService: UserService, private router: Router) { }
+  constructor(private _datePipe: DatePipe,private formBuilder: FormBuilder,private _sanitizer : DomSanitizer,
+              private _userService: UserService,private _activatedRoute: ActivatedRoute, private router: Router) { }
 
 
 
-  //Form Validables 
-  updateForm!: FormGroup;
-  submitted = false;
 
-  //Add user form actions
-  get f() { return this.updateForm.controls; }
-  onSubmit() {
-    
-    this.submitted = true;
-    // stop here if form is invalid
-    if (this.updateForm.invalid) {
-        return;
-    }
-    //True if all the fields are filled
-    if(this.submitted)
-    {
-      alert("Great!!");
-    }
-  
-  }
+
+              getFile(event: any): void{
+
+                this.file = event.target.files[0];
+              }
+             
+            
+            
+              //Form Validables 
+            
+              submitted = false;
+            
+              //Add user form actions
+              get f() { return this.registerForm.controls; }
+              onSubmit() {
+                
+                this.submitted = true;
+                // stop here if form is invalid
+                if (this.registerForm.invalid) {
+                    return;
+                }
+                //True if all the fields are filled
+                if(this.submitted)
+                {
+                  alert("Great!!");
+                }
+              
+              }
 
   ngOnInit() {
     this._userService.getUserDetails()
@@ -53,27 +64,33 @@ export class UserProfileComponent implements OnInit {
      
     }
     )
-    this.updateForm = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       pwd: ['', [Validators.required]],
       fname: ['', [Validators.required]],
       lname: ['', [Validators.required]],
       date: ['', [Validators.required]],
-      
+      role: ['', [Validators.required]],
       pic: ['', [Validators.required]],
       
       });
-
+      
+    
+  
+     
+     
   }
 
   convert(base64String : any) {
     return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + base64String)
   }
 
+id:number=3;
+
   UpdateUser() {
       
     this.dates=this._datePipe.transform( this.users.birthdate, 'yyyy-MM-dd');
-    this.users = this.updateForm.value;
+    this.users = this.registerForm.value;
     const formdata = new FormData();
     formdata.append('file', this.file)
     formdata.append('fname', this.users.fname)
@@ -83,8 +100,9 @@ export class UserProfileComponent implements OnInit {
     formdata.append('pwd', this.users.pwd)
 
     console.log(this.users) ;
+    console.log(this.users.id) ;
+    this._userService.UpdateUser(this.id,formdata)
     
-    this._userService.UpdateUser(formdata)
     .subscribe((response)=>{
       this.router.navigate(['dashboard'])
     },error=>{
@@ -92,10 +110,7 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  getFile(event: any): void{
 
-    this.file = event.target.files[0];
-  }
  
 
   

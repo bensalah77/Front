@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { CommonModule,DatePipe } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Routes, RouterModule } from "@angular/router";
 import { NgApexchartsModule } from "ng-apexcharts";
@@ -10,6 +10,8 @@ import { TopSellingComponent } from "./dashboard-components/top-selling/top-sell
 import { TopCardsComponent } from "./dashboard-components/top-cards/top-cards.component";
 import { BlogCardsComponent } from "./dashboard-components/blog-cards/blog-cards.component";
 import { UserProfileComponent } from "../user-profile/user-profile.component";
+import { TchatComponent } from "../tchat/tchat.component";
+
 
 
 const routes: Routes = [
@@ -24,7 +26,9 @@ const routes: Routes = [
   {
     path: 'profile',
     component: UserProfileComponent
-  }
+  },
+  { path: 'chat',
+   component: TchatComponent }
 ];
 
 @NgModule({
@@ -38,10 +42,14 @@ const routes: Routes = [
   declarations: [
     DashboardComponent,
     SalesRatioComponent,
+    UserProfileComponent,
     FeedsComponent,
     TopSellingComponent,
     TopCardsComponent,
     BlogCardsComponent
   ],
+  providers: [
+    DatePipe,
+  ]
 })
 export class DashboardModule {}

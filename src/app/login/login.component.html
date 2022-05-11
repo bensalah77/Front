@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row no-gutter">
         <!-- The image half -->
-        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+      <div class="col-md-6 d-none d-md-flex bg-image"></div>
         <!-- The content half -->
         <div class="col-md-6 bg-light">
             <div class="login d-flex align-items-center py-5">
@@ -32,10 +32,16 @@
 
                                 <div class="text-center d-flex justify-content-between mt-4"><p>Create Acount! <a href="http://localhost:4200/register" class="font-italic text-muted"> 
                                     <u>register</u></a></p></div>
+                                    
                                 <div class="text-center d-flex justify-content-between mt-4"><p>Reset Password ! <a href="http://localhost:4200/forgotpassword" class="font-italic text-muted"> 
                                         <u>resetpassword</u></a></p></div>
                              
                             </form>
+                           
+                                <div>
+                                  <button type="submit" (click)="loginWithGoogle()" class="btn btn-danger">Login with Google</button>
+                                </div>
+                              
                         </div>
                     </div>
                 </div><!-- End -->
