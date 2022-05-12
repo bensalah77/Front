@@ -1,0 +1,82 @@
+<div class="container-fluid">
+
+   
+ <div class="container">
+    <hr>
+    <nav class="navbar" >
+      <input class="form-control" type="text" name="postContent" [(ngModel)] = "postContent" (ngModelChange)="Search()" placeholder="Enter postContent To Search">
+    </nav>
+  <button class="btn btn-primary" (click)="showForm()"> Add post</button>
+ 
+    
+    <form [formGroup]="loginForm" (ngSubmit)="publications(loginForm)" [hidden]="hidden">
+      <br><br>
+      <h3>Add post:</h3>
+      <br>
+      <div class="form-group mb-3">
+          <input  type="text"  placeholder="enter the post content" name="postContent" formControlName="postContent" [ngClass]="{ 'is-invalid': submitted && loginForm.nbVoteYes.errors  }"class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+          <div *ngIf="submitted " class="invalid-feedback">
+              <div *ngIf="f.postContent.errors.required">publication content is required</div>
+           </div> 
+      </div>
+
+      <div class="form-group mb-3">
+        <input  type="text"  placeholder="usefulLinks" name="usefulLinks" formControlName="usefulLinks" [ngClass]="{ 'is-invalid': submitted && loginForm.nbVoteYes.errors  }"class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+        <div *ngIf="submitted " class="invalid-feedback">
+            <div *ngIf="f.usefulLinks.errors.required">usefulLinks is required</div>
+         </div> 
+    </div>
+
+
+ 
+      
+     
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Add post</button>
+      <button class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" (click)="hideForm()"> Cancel</button>
+  </form>
+  
+  
+  
+  
+   
+  </div>
+     
+
+    
+                         <!--  
+                            <form  #loginForm="ngForm" (ngSubmit)="publications(loginForm)" >
+                                <div class="form-group mb-3">
+                                    <input id="inputEmail" type="text" name="postContent" ngModel
+                                   
+                                     #usernameInput="ngModel" placeholder="postContent" required autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                     
+                                </div>
+                              
+                                
+                               
+                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">submit post</button>
+                                
+
+                            </form>
+
+                            --> 
+
+
+                            <div class="card" *ngFor="let pub of pubs">
+                                <h5 class="card-header">Posts</h5>
+                                <div class="card-body">
+                                  <h5 class="card-title">{{pub.postContent}}</h5>
+                                  <h6>created at:</h6><h6 class="card-title">{{pub.createDate}}</h6>
+                                  <a href="#" class="btn btn-primary">edit</a> 
+                                   
+                                  <button mat-raised-button type="button"
+                                  matTooltip="Remove" 
+                                  [matTooltipPosition]="'above'" 
+                                  (click)="deletePub(pub.id)"
+                                  class="p-3 border btn btn-outline-danger btn-sm">
+                                  <i class="material-icons">delete</i>
+                                  </button>
+                                </div>
+                              </div>
+           
+</div>
