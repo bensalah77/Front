@@ -1,0 +1,52 @@
+
+<!--<a class="navbar-brand" href="#">Navbar</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>-->
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid" >
+      <a class="navbar-brand" href="article"style="color :azure" >Forum CRUD</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+ 
+</button>
+        <div class="d-flex">
+            <button type="button" class="btn btn-success" (click)="AddArtX()">Add Article</button>
+        </div>
+    </div>
+    
+</nav>
+
+
+<input class="form-control" type="text" name="content" [(ngModel)]="content" (ngModelChange)= "Search()"
+    placeholder="Enter Content to search">
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">id article</th>
+            <th scope="col">content</th>
+            <th scope="col">DATE</th>
+            <th scope="col">Property of</th>
+            <th scope="col">Action</th>
+          </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor= "let art of article">
+        <td>
+            {{art.idArticle}}
+        </td>
+        <td>
+            {{art.content}}
+        </td>
+        <td>
+          {{art.date}}
+        </td>
+        <td>
+            Mehdi jabjab
+        </td>
+        <td>
+            <button class="btn btn-info" (click)="updateArticleX(art.idArticle)">Edit</button>
+            <button class="btn btn-danger mx-3" (click)="deleteArticleX(art.idArticle)">Delete</button>
+        </td>
+        </tr>
+    </tbody>
+</table>

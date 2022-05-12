@@ -1,0 +1,26 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="article"style="color :azure" >Forum CRUD</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+</button>
+    </div>
+</nav>
+
+<div class="container col-5">
+    <br>
+    <h2 class="text-center">Add an Article</h2>
+   <br>
+    <form>
+<div class="form-group">
+    <label for="exampleFormControlInput1" class="form-label">Date</label>
+    <input type="email" class="form-control" id="Date" placeholder="yyyy-mm-dd"
+    name="date" [(ngModel)]="article.date">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1" class="form-label">Content</label>
+    <textarea class="form-control" id="Content" rows="3" name="content" [(ngModel)]="article.content"></textarea>
+  </div>
+  <br>
+  <button type="submit" (click)="addArticle()" class="btn btn-primary">Submit</button>
+</form>
+</div>

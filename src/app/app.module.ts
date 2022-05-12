@@ -26,7 +26,9 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { UpdateArticleComponent } from './update-article/update-article.component';
-import { SortidPipe } from './sortid.pipe';
+import{Ng2SearchPipeModule}from 'ng2-search-filter';
+import{Ng2OrderModule}from 'ng2-order-pipe';
+import{NgxPaginationModule}from 'ngx-pagination';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -45,7 +47,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ArticleListComponent,
     AddArticleComponent,
     UpdateArticleComponent,
-    SortidPipe,
   ],
   imports: [
     CommonModule,
@@ -55,6 +56,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    NgxPaginationModule,
     RouterModule.forRoot(Approutes, { useHash: false, relativeLinkResolution: 'legacy' }),
     PerfectScrollbarModule,
   ],
