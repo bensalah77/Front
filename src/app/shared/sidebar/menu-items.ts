@@ -35,10 +35,10 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
-    path: '/about',
+    path: '/patner',
     title: 'Partnerships',
     icon: 'bi bi-people',
-    class: '',
+    class: 'ListPartnerComponent',
     extralink: false,
     submenu: []
   },

@@ -1,0 +1,72 @@
+
+<!--ADD BADGE-->  
+<div class="container">
+  <hr>
+<button class="btn btn-primary" (click)="showForm()"> Add Badge</button>
+
+  <!--Add Form-->
+  <form [formGroup]="form" (ngSubmit)="addPartner()" [hidden]="hidden">
+    <br><br>
+    <h3>Add Badge form:</h3>
+    <br>
+    <div class="form-group mb-3">
+        <input  type="text"  placeholder="name" name="name" formControlName="name" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+        
+    </div>
+    <div class="form-group mb-3">
+      <input  type="text"  placeholder="address" name="address" formControlName="address" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+      
+    </div>
+
+    <div class="form-group mb-3">
+      <input  type="text"  placeholder="email" name="email"
+       formControlName="email" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+      
+    </div>
+
+    <div class="form-group mb-3">
+      <input  type="number"  placeholder="num_tel" name="num_tel"
+       formControlName="num_tel" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
+      
+    </div>
+
+    
+   
+    <button type="submit" [disabled]="form.invalid" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Add partner</button>
+    <button class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" (click)="hideForm()"> Cancel</button>
+</form>
+
+
+  
+
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">name</th>
+        <th scope="col">address</th>
+        <th scope="col">email</th>
+        <th scope="col">num_tel</th>
+        <th scope="col">delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let partner of partner">
+        
+        <td>{{partner.name}}</td>
+        <td>{{partner.address}}</td>
+        <td>{{partner.email}}</td>
+        <td>+ 216 {{partner.num_tel}}</td>
+        <th>
+          <button mat-raised-button type="button"
+                                                        matTooltip="Remove" 
+                                                        (click)="deletePartner(partner.id)"
+                                                        class="p-3 border btn btn-outline-danger btn-sm">
+                                                        <i class="material-icons">delete</i>
+                                                        </button>
+        </th>
+      </tr>
+    
+    </tbody>
+  </table>
