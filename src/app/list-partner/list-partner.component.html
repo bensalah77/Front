@@ -7,7 +7,7 @@
   <!--Add Form-->
   <form [formGroup]="form" (ngSubmit)="addPartner()" [hidden]="hidden">
     <br><br>
-    <h3>Add Badge form:</h3>
+    <h3>Add Partner form:</h3>
     <br>
     <div class="form-group mb-3">
         <input  type="text"  placeholder="name" name="name" formControlName="name" class="form-control rounded-pill border-0 shadow-sm px-4 text-primary" required>
@@ -41,10 +41,16 @@
 
 </div>
 
+<nav class="navbar" >
+  <input class="form-control" type="text" name="name" [(ngModel)] = "name" (ngModelChange)="Search()" placeholder="Enter Name To Search">
+</nav>
+  
+  
+
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">name</th>
+        <th  scope="col" >name</th>
         <th scope="col">address</th>
         <th scope="col">email</th>
         <th scope="col">num_tel</th>
@@ -52,7 +58,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr  *ngFor="let partner of partner">
+      <tr  *ngFor="let partner of partner ">
         
         <td>{{partner.name}}</td>
         <td>{{partner.address}}</td>

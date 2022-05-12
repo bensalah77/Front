@@ -16,7 +16,7 @@ export class ListPartnerComponent implements OnInit {
   p : Partner = new Partner();
   selectedFile! : File;
   imagePreview : any;
-
+  name : any ;
   hidden : boolean = true;  
   submitted = false;
 
@@ -29,6 +29,7 @@ export class ListPartnerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+   
     
     this.partner_service.refreshNeeded$
     .subscribe(() => 
@@ -115,6 +116,17 @@ export class ListPartnerComponent implements OnInit {
      this.partner_service.getPartners().subscribe((data: Partner[]) => (this.partner = data)); 
    }
 
+   Search() {
+     if (this.name == ""){
+       this.ngOnInit();
+     }else {
+       this.partner = this.partner?.filter(res=>{
+         return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+       })
+     }
+   }
+   
+  
    //redirect to add form
 showForm(){
   this.hidden = false;
@@ -123,4 +135,6 @@ showForm(){
 hideForm() {
   this.hidden = true;
 }
+
+
 }
