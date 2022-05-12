@@ -20,7 +20,7 @@ reset(resetForm:NgForm){
   .subscribe(
     (response: any) => {
       localStorage.setItem('ResetToken', response.token);
-      this.router.navigate(['/', 'login']);
+      this.router.navigate(['/login']);
         localStorage.clear();
     },
     (error) => {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable,Subject  } from 'rxjs';
 import { Tchat } from '../model/tchat.model';
-
+import { tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -52,15 +52,24 @@ requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
       return this.user.get<Tchat[]>("http://localhost:8082/TCHAT/receiverTChat/"+id);
      }
 
-     
+     private _refreshNeeded$ = new Subject<void>();
+     get refreshNeeded$()
+     {
+       return this._refreshNeeded$;
+     }
+   
   public chat(textMessage?:any){ 
     let body={
       "textMessage":textMessage
     }
     return this.user.post("http://localhost:8082/TCHAT/sendTChat/"+3,body, {
       headers: this.requestHeader,
-    });
-   }
+    }).pipe( 
+      tap(() => { this._refreshNeeded$.next();
+      })
+);
+};
+   
 
 
 
